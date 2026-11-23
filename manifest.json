@@ -1,10 +1,21 @@
+
 {
-  "name": "Hello World",
-  "description": "Base Level Extension",
-  "version": "1.0",
   "manifest_version": 3,
+  "name": "Unscroll",
+  "version": "1.0.0",
+  "description": "Stay connected, not constantly scrolling.",
+
+  "permissions": ["storage"],
+
   "action": {
-    "default_popup": "hello.html",
+    "default_popup": "popup/popup.html",
     "default_icon": "icon.png"
-  }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content/youtube.js"]
+    }
+  ]
 }

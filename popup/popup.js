@@ -1,12 +1,18 @@
-const youtubeToggle = document.getElementById("youtubeToggle");
+const toggles = {
+  youtubeToggle: "youtubeEnabled",
+  tiktokToggle: "tiktokEnabled"
+};
 
 async function init() {
-  const { youtubeEnabled = true } = await chrome.storage.local.get("youtubeEnabled");
-  youtubeToggle.checked = youtubeEnabled;
-}
+  for (const [elementId, key] of Object.entries(toggles)) {
+    const checkbox = document.getElementById(elementId);
+    const result = await chrome.storage.local.get({ [key]: true });
+    checkbox.checked = result[key];
 
-youtubeToggle.addEventListener("change", () => {
-  chrome.storage.local.set({ youtubeEnabled: youtubeToggle.checked });
-});
+    checkbox.addEventListener("change", () => {
+      chrome.storage.local.set({ [key]: checkbox.checked });
+    });
+  }
+}
 
 init();

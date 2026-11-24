@@ -16,6 +16,10 @@
     {
       "matches": ["https://www.youtube.com/*"],
       "js": ["content/youtube.js"]
+    },
+    {
+      "matches":["https://www.tiktok.com/*"],
+      "js": ["content/tiktok.js"]
     }
   ]
 }

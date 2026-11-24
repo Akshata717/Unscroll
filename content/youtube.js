@@ -7,6 +7,7 @@ function update() {
         if (existing) return;
 
         const screen = document.createElement("div");
+        
         screen.id = "unscroll-block";
         screen.innerHTML = `
             <h1>Unscroll.</h1>
@@ -26,6 +27,25 @@ function update() {
             z-index: 999999;
             text-align: center;
         `;
+        const but = document.createElement("button");
+        but.innerText = "go back to youtube";
+        but.id = "myButton";
+        but.style.cssText = `
+             margin-top: 16px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background: #244b3c;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;      
+        `;
+        but.addEventListener("click", () => {
+        location.href = "https://www.youtube.com/";
+        });
+
+
+        screen.appendChild(but);          
         document.body.appendChild(screen);
         document.querySelectorAll("video").forEach((v) => v.pause());
     } else if (existing) {

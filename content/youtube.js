@@ -1,10 +1,30 @@
 let enabled = true;
 
+
+function onPlay(e) {
+    if (e.target instanceof HTMLVideoElement){ 
+        e.target.pause();
+    }
+}
+
+function blockPlayback(on) {
+    if (on) {
+        document.addEventListener("play", onPlay, true);
+        document.querySelectorAll("video").forEach((v) => v.pause());
+    } else {
+        document.removeEventListener("play", onPlay, true);
+    }
+}
+
+
 function update() {
     const existing = document.getElementById("unscroll-block");
 
     if (enabled && location.pathname.startsWith("/shorts/")) {
-        if (existing) return;
+        blockPlayback(true);
+        if (existing) {
+            return;
+        }
 
         const screen = document.createElement("div");
         
@@ -47,9 +67,11 @@ function update() {
 
         screen.appendChild(but);          
         document.body.appendChild(screen);
-        document.querySelectorAll("video").forEach((v) => v.pause());
-    } else if (existing) {
-        existing.remove();
+    } else {
+        blockPlayback(false);
+        if (existing){
+            existing.remove();
+        }
     }
 }
 

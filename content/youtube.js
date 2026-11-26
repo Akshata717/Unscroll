@@ -29,24 +29,38 @@ function update() {
         const screen = document.createElement("div");
         
         screen.id = "unscroll-block";
-        screen.innerHTML = `
-            <h1>Unscroll.</h1>
-            <h2>Not this time.</h2>
-            <p>You've chosen to keep short-form videos out of your feed.</p>
-        `;
+
         screen.style.cssText = `
             position: fixed;
             inset: 0;
-            background: #f5f7f5;
+            background: #FFF2B4;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            font-size: 40px;
             font-family: Arial, sans-serif;
-            color: #244b3c;
+            color: #15370D;
             z-index: 999999;
             text-align: center;
         `;
+
+        const card = document.createElement("div");
+        card.style.cssText = `
+        background: #728E6D;
+        padding: 40px 48px;
+        border-radius: 16px;
+        border: 1px solid #728E6D;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        max-width: 420px;
+        `;
+
+        card.innerHTML = `
+            <h1>Unscroll.</h1>
+            <h2>Not this time.</h2>
+            <p>You've chosen to keep short-form videos out of your feed.</p>
+        `;
+
         const but = document.createElement("button");
         but.innerText = "go back to youtube";
         but.id = "myButton";
@@ -65,8 +79,9 @@ function update() {
         });
 
 
-        screen.appendChild(but);          
-        document.body.appendChild(screen);
+            card.appendChild(but);
+            screen.appendChild(card);
+            document.body.appendChild(screen);
     } else {
         blockPlayback(false);
         if (existing){

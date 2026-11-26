@@ -18,6 +18,10 @@
       "js": ["content/youtube.js"]
     },
     {
+      "matches":["https://www.instagram.com/*"],
+      "js": ["content/instagram.js"]
+    },
+    {
       "matches":["https://www.tiktok.com/*"],
       "js": ["content/tiktok.js"]
     }

@@ -1,6 +1,7 @@
 const toggles = {
   youtubeToggle: "youtubeEnabled",
-  tiktokToggle: "tiktokEnabled"
+  tiktokToggle: "tiktokEnabled",
+  instagramToggle: "instagramEnabled"
 };
 
 async function init() {
